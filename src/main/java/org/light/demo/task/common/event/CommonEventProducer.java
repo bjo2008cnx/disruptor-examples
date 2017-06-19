@@ -17,11 +17,13 @@ public class CommonEventProducer<T> {
     }
 
     public void produce(T entity) {
+        log.debug("produce start");
         long sequence = ringBuffer.next();
         try {
             CommonEvent event = ringBuffer.get(sequence);
             event.setValue(entity);  // Fill with data
         } finally {
+            log.debug("produce end");
             ringBuffer.publish(sequence);
         }
     }

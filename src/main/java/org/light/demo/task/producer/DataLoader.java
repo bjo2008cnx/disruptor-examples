@@ -1,7 +1,10 @@
 package org.light.demo.task.producer;
 
+import org.light.demo.task.domain.CustomerData;
+
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * DataLoader
@@ -9,10 +12,6 @@ import java.util.List;
  * @author Michael.Wang
  * @date 2017/6/19
  */
-public class DataLoader {
-    public static List load() {
-        LinkedList list = new LinkedList();
-        // TODO load from db
-        return list;
-    }
+public interface DataLoader {
+    List<CustomerData> load();
 }

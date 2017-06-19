@@ -15,9 +15,15 @@ import java.util.List;
 @Slf4j
 public class DataLoaderThread implements Runnable {
 
-    private static Thread thread = new Thread(new DataLoaderThread());
+    private static Thread thread = new Thread(new DataLoaderThread(new FakeDataLoader())); //TODO
 
     private static volatile boolean stopFlag = false;
+
+    private DataLoader loader;
+
+    public DataLoaderThread(DataLoader loader) {
+        this.loader = loader;
+    }
 
     static {
         thread.setName("Customer-DataLoaderThread");
@@ -30,9 +36,9 @@ public class DataLoaderThread implements Runnable {
     @Override
     public void run() {
         CommonEventProducer producer = CommonEventStarter.getProducer();
-
         while (!stopFlag) {
-            List list = DataLoader.load();
+            List list = loader.load();
+            log.debug("data size:" + list.size());
             for (int i = 0; i < list.size(); i++) {
                 producer.produce(list.get(i));//生产者生产数据
             }
