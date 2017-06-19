@@ -7,6 +7,6 @@ import com.lmax.disruptor.EventHandler;
  *
  * @author Michael.Wang
  */
-public abstract class CommonEventConsumer implements EventHandler<CommonLogEvent> {
+public abstract class CommonEventConsumer implements EventHandler<CommonEvent> {
 
 }

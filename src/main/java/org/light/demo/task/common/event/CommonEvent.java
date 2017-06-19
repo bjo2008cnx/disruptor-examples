@@ -9,7 +9,7 @@ import lombok.Data;
  * @author Michael.Wang
  */
 @Data
-public class CommonLogEvent<T> {
+public class CommonEvent<T> {
     private T value;
 
     /**
@@ -17,11 +17,11 @@ public class CommonLogEvent<T> {
      *
      * @author Michael.Wang
      */
-    public static class Factory implements EventFactory<CommonLogEvent> {
+    public static class Factory implements EventFactory<CommonEvent> {
 
         @Override
-        public CommonLogEvent newInstance() {
-            return new CommonLogEvent();
+        public CommonEvent newInstance() {
+            return new CommonEvent();
         }
     }
 }

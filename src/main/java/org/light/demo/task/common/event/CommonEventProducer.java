@@ -10,16 +10,16 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class CommonEventProducer<T> {
-    private final RingBuffer<CommonLogEvent> ringBuffer;
+    private final RingBuffer<CommonEvent> ringBuffer;
 
-    public CommonEventProducer(RingBuffer<CommonLogEvent> ringBuffer) {
+    public CommonEventProducer(RingBuffer<CommonEvent> ringBuffer) {
         this.ringBuffer = ringBuffer;
     }
 
     public void produce(T entity) {
         long sequence = ringBuffer.next();
         try {
-            CommonLogEvent event = ringBuffer.get(sequence);
+            CommonEvent event = ringBuffer.get(sequence);
             event.setValue(entity);  // Fill with data
         } finally {
             ringBuffer.publish(sequence);
