@@ -24,7 +24,7 @@ public class FakeDataLoader implements DataLoader {
             data.setName("TestData");
             list.add(data);
             try {
-                Thread.sleep(10);
+                Thread.sleep(30);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
