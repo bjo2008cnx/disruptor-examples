@@ -33,8 +33,8 @@ public class AdditionalDemo {
 
         //把消息处理器提交到线程池  
         executors.submit(transProcessor);
-        //如果存大多个消费者 那重复执行上面3行代码 把TradeTransactionInDBHandler换成其它消费者类  
 
+        //如果存大多个消费者 那重复执行上面3行代码 把TradeTransactionInDBHandler换成其它消费者类  
         Future<?> future = executors.submit(new Callable<Void>() {
             @Override
             public Void call() throws Exception {

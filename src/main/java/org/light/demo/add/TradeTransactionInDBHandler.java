@@ -14,8 +14,8 @@ public class TradeTransactionInDBHandler implements EventHandler<TradeTransactio
 
     @Override
     public void onEvent(TradeTransaction event) throws Exception {
-        //这里做具体的消费逻辑  
+        //这里做具体的消费逻辑
         event.setId(UUID.randomUUID().toString());//简单生成下ID
-        System.out.println(event.getId());
+        System.out.println(Thread.currentThread().getId() + "::" + event.getId());
     }
 }  
